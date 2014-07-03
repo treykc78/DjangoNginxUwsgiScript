@@ -77,7 +77,11 @@ cd -
 sudo cp nginx.conf /etc/nginx
 
 # 7 启动
-sudo /ect/init.d/nginx reload
-uwsgi -x $PROJECT_PATH"/uwsgi.xml"
+ps -e | grep -i uwsgi
+if [ "$?" != "0" ]; then
+    killall uwsgi
+fi
+#sudo /etc/init.d/nginx reload
+#uwsgi -x $PROJECT_PATH"/uwsgi.xml"
 
 

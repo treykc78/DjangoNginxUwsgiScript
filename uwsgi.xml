@@ -1,5 +1,5 @@
 <uwsgi>
-  <socket>0.0.0.0:3031</socket> <!-- 进程启用IP+端口-->
+  <socket>0.0.0.0:3032</socket> <!-- 进程启用IP+端口-->
   <chdir>PROJECT_PATH</chdir> <!-- 项目目录 -->
   <module>django_wsgi</module> <!-- 刚配置的django_wsgi.py的文件名 -->
   <pythonpath>..</pythonpath>>
