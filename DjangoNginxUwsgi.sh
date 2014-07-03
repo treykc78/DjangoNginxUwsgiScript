@@ -10,6 +10,7 @@ fi
 
 PROJECT_NAME=$1
 PROJECT_PATH=$2
+SCRIPT_PATH=$(pwd)/${0}
 LOG=$(pwd)"/DNU.logs"
 
 if [ -f "$LOG" ]; then
