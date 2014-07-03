@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1、确定项目路径
-if [ "$#" != "$2" ]; then
+if [ "$#" != "2" ]; then
     echo "    Usage: "
     echo "        $0 Project_Name Absoulte_Path_For_You_Django_Project."
     exit
@@ -14,8 +14,6 @@ LOG=$(pwd)"/DNU.logs"
 if [ -f "$LOG" ]; then
     rm -rf $LOG
 fi
-
-exit
 
 function errorLog() {
     if [ "$1" != "0" ]; then
@@ -55,14 +53,14 @@ fi
 # 3 配置文件django_wsgi.py
 cp django_wsgi.py $PROJECT_PATH
 cd $PROJECT_PATH
-sed -e "s/PROJECT_NAME/$PROJECT_NAME/g" django_wsgi.py
-cd ..
+sed -i "s%PROJECT_NAME%$PROJECT_NAME%g" django_wsgi.py
+cd -
 
 # 4 配置文件uwsgi
 cp uwsgi.xml $PROJECT_PATH
 cd $PROJECT_PATH
-sed -e "s/PROJECT_PATH/$PROJECT_PATH/g" uwsgi.xml
-cd ..
+sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" uwsgi.xml
+cd -
 
 # 5 配置文件django.conf
 nginxLogDir=$PROJECT_PATH"/logs"
@@ -71,9 +69,9 @@ if [ ! -d "$nginxLogDir" ]; then
 fi
 cp django.conf $PROJECT_PATH
 cd $PROJECT_PATH
-sed -e "s/PROJECT_PATH/$PROJECT_PATH/g" django.conf
+sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" django.conf
 sudo mv django.conf /etc/nginx
-cd ..
+cd -
 
 # 6 配置文件nginx.conf
 sudo cp nginx.conf /etc/nginx
