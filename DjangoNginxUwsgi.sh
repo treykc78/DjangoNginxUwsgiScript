@@ -1,4 +1,5 @@
 #!/bin/bash
+# OS: Ubuntu 14.04
 
 # 1、确定项目路径
 if [ "$#" != "2" ]; then
