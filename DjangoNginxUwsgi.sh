@@ -87,20 +87,25 @@ fi
 # sudo /etc/init.d/nginx reload
 # uwsgi -x $PROJECT_PATH"/uwsgi.xml"
 
-echo "Now, you need to reload nginx:"
-echo "    Run: sudo /etc/init.d/nginx reload"
+echo "Now, you had better do 3 things one by one:"
+echo "    1. Run: killall uwsgi"
+echo "    2. Run: uwsgi -x $PROJECT_PATH/uwsgi.xml"
+echo "    3. Run: sudo /etc/init.d/nginx reload"
 
-echo "Then: start config uwsgi: "
-echo "    Run: uwsgi $PROJECT_PATH/uwsgi.xml"
+#echo "Now, you need to reload nginx:"
+#echo "    Run: sudo /etc/init.d/nginx reload"
 
-echo "If you want to stop uwsgi: "
-echo "  You can go through the process uwsgi first"
-echo "    Run: ps -e | grep uwsgi"
-echo "  If you wantt to stop:"
-echo "    Run: killall uwsgi"
+#echo "Then: start config uwsgi: "
+#echo "    Run: uwsgi $PROJECT_PATH/uwsgi.xml"
 
-echo "Any you want to modify something, you had better stop uwsgi first and run uwsgi again"
-echo "Congratulations!"
+#echo "If you want to stop uwsgi: "
+#echo "  You can go through the process uwsgi first"
+#echo "    Run: ps -e | grep uwsgi"
+#echo "  If you wantt to stop:"
+#echo "    Run: killall uwsgi"
+
+#echo "Any you want to modify something, you had better stop uwsgi first and run uwsgi again"
+#echo "Congratulations!"
 
 exit
 
