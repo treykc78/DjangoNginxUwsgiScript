@@ -81,7 +81,24 @@ ps -e | grep -i uwsgi
 if [ "$?" != "0" ]; then
     killall uwsgi
 fi
-#sudo /etc/init.d/nginx reload
-#uwsgi -x $PROJECT_PATH"/uwsgi.xml"
+# sudo /etc/init.d/nginx reload
+# uwsgi -x $PROJECT_PATH"/uwsgi.xml"
+
+echo "Now, you need to reload nginx:"
+echo "    Run: sudo /etc/init.d/nginx reload"
+
+echo "Then: start config uwsgi: "
+echo "    Run: uwsgi $PROJECT_PATH/uwsgi.xml"
+
+echo "If you want to stop uwsgi: "
+echo "  You can go through the process uwsgi first"
+echo "    Run: ps -e | grep uwsgi"
+echo "  If you wantt to stop:"
+echo "    Run: killall uwsgi"
+
+echo "Any you want to modify something, you had better stop uwsgi first and run uwsgi again"
+echo "Congratulations!"
+
+exit
 
 
