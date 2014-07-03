@@ -37,7 +37,9 @@ which uwsgi >> /dev/null
 if [ "$?" != "0" ]; then
     pip install uwsgi
     if [ "$?" != "0" ]; then
-        sudo apt-get install -y uwsgi
+        # @TODO apt-get install uwsgi cannot success
+        # sudo apt-get install -y uwsgi
+        sudo pip install uwsgi
         errorLog $? uwsgi
     fi
 else
