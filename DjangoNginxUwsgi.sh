@@ -11,7 +11,7 @@ fi
 PROJECT_NAME=$1
 PROJECT_PATH=$2
 SCRIPT_PATH=$(pwd)/${0}
-NGINX_PATH="$NGINX_PATH"
+NGINX_PATH=$3
 LOG=$(pwd)"/DNU.logs"
 
 if [ -f "$LOG" ]; then
@@ -56,13 +56,13 @@ fi
 
 
 # 3 配置文件django_wsgi.py
-cp django_wsgi.py $PROJECT_PATH
+cp $SCRIPT_PATH"django_wsgi.py" $PROJECT_PATH
 cd $PROJECT_PATH
 sed -i "s%PROJECT_NAME%$PROJECT_NAME%g" django_wsgi.py
 cd -
 
 # 4 配置文件uwsgi
-cp uwsgi.xml $PROJECT_PATH
+cp $SCRIPT_PATH"uwsgi.xml" $PROJECT_PATH
 cd $PROJECT_PATH
 sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" uwsgi.xml
 cd -
@@ -79,7 +79,7 @@ sudo mv django.conf $NGINX_PATH
 cd -
 
 # 6 配置文件nginx.conf
-sudo cp nginx.conf $NGINX_PATH
+sudo cp $SCRIPT_PATH"nginx.conf" $NGINX_PATH
 
 # 7 启动
 ps -e | grep -i uwsgi
