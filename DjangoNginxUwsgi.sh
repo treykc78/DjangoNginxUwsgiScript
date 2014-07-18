@@ -11,6 +11,7 @@ fi
 PROJECT_NAME=$1
 PROJECT_PATH=$2
 SCRIPT_PATH=$(pwd)/${0}
+NGINX_PATH="$NGINX_PATH"
 LOG=$(pwd)"/DNU.logs"
 
 if [ -f "$LOG" ]; then
@@ -74,19 +75,21 @@ fi
 cp django.conf $PROJECT_PATH
 cd $PROJECT_PATH
 sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" django.conf
-sudo mv django.conf /etc/nginx
+sudo mv django.conf $NGINX_PATH
 cd -
 
 # 6 配置文件nginx.conf
-sudo cp nginx.conf /etc/nginx
+sudo cp nginx.conf $NGINX_PATH
 
 # 7 启动
 ps -e | grep -i uwsgi
 if [ "$?" != "0" ]; then
     killall uwsgi
 fi
+cd $PROJECT_PATH
 uwsgi -x $PROJECT_PATH"/uwsgi.xml"
 sudo /etc/init.d/nginx reload
+cd -
 
 echo "Hope you success."
 echo "If NOT, TRY TO NEXT:"
