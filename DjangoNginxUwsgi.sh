@@ -2,7 +2,7 @@
 # OS: Ubuntu 14.04
 
 # 1、确定项目路径
-if [ "$#" != "3" ]; then
+if [ "$#" != "2" ]; then
     echo "    Usage:(2 params) "
     echo "        $0 Project_Name Absoulte_Path_For_You_Django_Projecta"
     exit
