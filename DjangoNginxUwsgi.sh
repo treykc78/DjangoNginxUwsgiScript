@@ -10,8 +10,8 @@ fi
 
 PROJECT_NAME=$1
 PROJECT_PATH=$2
-SCRIPT_PATH=$(pwd)"/"
-NGINX_PATH=$3"/"
+SCRIPT_PATH=$(pwd)
+NGINX_PATH=$3
 
 LOG=$(pwd)"/DNU.logs"
 
@@ -57,30 +57,26 @@ fi
 
 
 # 3 配置文件django_wsgi.py
-cp $SCRIPT_PATH"django_wsgi.py" $PROJECT_PATH
-cd $PROJECT_PATH
-sed -i "s%PROJECT_NAME%$PROJECT_NAME%g" django_wsgi.py
-cd -
+cp $SCRIPT_PATH"/django_wsgi.py" $PROJECT_PATH
+sed -i "s%PROJECT_NAME%$PROJECT_NAME%g" $PROJECT_PATH"/django_wsgi.py"
 
 # 4 配置文件uwsgi
-cp $SCRIPT_PATH"uwsgi.xml" $PROJECT_PATH
-cd $PROJECT_PATH
-sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" uwsgi.xml
-cd -
+cp $SCRIPT_PATH"/uwsgi.xml" $PROJECT_PATH
+sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" $PROJECT_PATH"/uwsgi.xml"
 
 # 5 配置文件django.conf
 nginxLogDir=$PROJECT_PATH"/logs"
 if [ ! -d "$nginxLogDir" ]; then
     mkdir $nginxLogDir
 fi
-cp django.conf $PROJECT_PATH
-cd $PROJECT_PATH
-sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" django.conf
-sudo mv $SCRIPT_PATH"django.conf" $NGINX_PATH
-cd -
+# cp django.conf $PROJECT_PATH
+# cd $PROJECT_PATH
+sudo cp $SCRIPT_PATH"/django.conf" $NGINX_PATH
+sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" $NGINX_PATH"/django.conf"
+# cd -
 
 # 6 配置文件nginx.conf
-sudo cp $SCRIPT_PATH"nginx.conf" $NGINX_PATH
+sudo cp $SCRIPT_PATH"/nginx.conf" $NGINX_PATH
 
 # 7 启动
 ps -e | grep -i uwsgi
