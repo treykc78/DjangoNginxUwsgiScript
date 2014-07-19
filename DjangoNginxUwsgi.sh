@@ -2,9 +2,9 @@
 # OS: Ubuntu 14.04
 
 # 1、确定项目路径
-if [ "$#" != "2" ]; then
+if [ "$#" != "3" ]; then
     echo "    Usage: "
-    echo "        $0 Project_Name Absoulte_Path_For_You_Django_Project."
+    echo "        $0 Project_Name Absoulte_Path_For_You_Django_Projecta NGINX_PATH"
     exit
 fi
 
