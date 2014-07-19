@@ -11,7 +11,7 @@ fi
 PROJECT_NAME=$1
 PROJECT_PATH=$2
 SCRIPT_PATH=$(pwd)
-NGINX_PATH="/etc/nginx"
+NGINX_PATH="/usr/local/nginx"
 
 LOG=$(pwd)"/DNU.logs"
 
@@ -30,8 +30,11 @@ function errorLog() {
 # 2、安装软件
 which nginx >> /dev/null
 if [ "$?" != "0" ]; then
-    sudo apt-get install -y nginx
+    git clone https://github.com/nginx/nginx.git
+    cd nginx
+    ./configure && make && sudo make install
     errorLog $? nginx
+    cd -
 else
     echo "已经安装 nginx" >> $LOG  
 fi
