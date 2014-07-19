@@ -3,7 +3,7 @@
 
 # 1、确定项目路径
 if [ "$#" != "3" ]; then
-    echo "    Usage: "
+    echo "    Usage:(3 params) "
     echo "        $0 Project_Name Absoulte_Path_For_You_Django_Projecta NGINX_PATH"
     exit
 fi
