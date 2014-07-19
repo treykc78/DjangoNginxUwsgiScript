@@ -75,7 +75,7 @@ fi
 cp django.conf $PROJECT_PATH
 cd $PROJECT_PATH
 sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" django.conf
-sudo mv django.conf $NGINX_PATH
+sudo mv $NGINX_PATH"django.conf" $NGINX_PATH
 cd -
 
 # 6 配置文件nginx.conf
