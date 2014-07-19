@@ -11,7 +11,7 @@ fi
 PROJECT_NAME=$1
 PROJECT_PATH=$2
 SCRIPT_PATH=$(pwd)
-NGINX_PATH="/usr/local/nginx"
+NGINX_PATH="/usr/local/nginx/conf"
 
 LOG=$(pwd)"/DNU.logs"
 
