@@ -3,7 +3,7 @@
 ## Operating System
 Ubuntu 14.04
 
-## Usage:(3 params)
-./DjangoNginxUwsgi.sh Project_Name Absoulte_Path_For_You_Django_Project NGINX_PATH
+## Usage:(2 params)
+./DjangoNginxUwsgi.sh Project_Name Absoulte_Path_For_You_Django_Project
 
 

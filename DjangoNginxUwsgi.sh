@@ -3,15 +3,15 @@
 
 # 1、确定项目路径
 if [ "$#" != "3" ]; then
-    echo "    Usage:(3 params) "
-    echo "        $0 Project_Name Absoulte_Path_For_You_Django_Projecta NGINX_PATH"
+    echo "    Usage:(2 params) "
+    echo "        $0 Project_Name Absoulte_Path_For_You_Django_Projecta"
     exit
 fi
 
 PROJECT_NAME=$1
 PROJECT_PATH=$2
 SCRIPT_PATH=$(pwd)
-NGINX_PATH=$3
+NGINX_PATH="/etc/nginx"
 
 LOG=$(pwd)"/DNU.logs"
 
