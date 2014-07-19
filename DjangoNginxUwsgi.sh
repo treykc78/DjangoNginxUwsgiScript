@@ -72,7 +72,7 @@ fi
 # cp django.conf $PROJECT_PATH
 # cd $PROJECT_PATH
 sudo cp $SCRIPT_PATH"/django.conf" $NGINX_PATH
-sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" $NGINX_PATH"/django.conf"
+sudo sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" $NGINX_PATH"/django.conf"
 # cd -
 
 # 6 配置文件nginx.conf
