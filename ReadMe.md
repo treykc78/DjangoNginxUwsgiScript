@@ -14,3 +14,8 @@ Ubuntu 14.04
 ## Change IP that you what be viewed
 in file `/etc/nginx/django.conf`
 modify : server_name 127.0.0.1 0.0.0.0 192.168.1.1 ...(each IP split with blank)
+
+# Change User
+in file `/etc/nginx/nginx.cof`
+"user www-data;"  ---Change to--> "user root admin;"
+(Take notice: in here root or admin is your nginx user)
