@@ -1,6 +1,13 @@
 #!/bin/bash
 # OS: Ubuntu 14.04
 
+# Current Username
+user=$(whoami)
+
+# LocalIP eth0
+NIC=eth0
+LocalIP=$(LANG=C ifconfig $NIC | awk '/inet addr:/{ print $2   }' | awk -F: '{print $2 }')
+
 # 1、确定项目路径
 if [ "$#" != "2" ]; then
     echo "    Usage:(2 params) "
@@ -73,10 +80,12 @@ fi
 # cd $PROJECT_PATH
 sudo cp $SCRIPT_PATH"/django.conf" $NGINX_PATH
 sudo sed -i "s%PROJECT_PATH%$PROJECT_PATH%g" $NGINX_PATH"/django.conf"
+sudo sed -i "s%127.0.0.1%$LocalIP%g" $NGINX_PATH"/django.conf"
 # cd -
 
 # 6 配置文件nginx.conf
 sudo cp $SCRIPT_PATH"/nginx.conf" $NGINX_PATH
+sudo sed -i "s%www-data%$user%g" $NGINX_PATH"/nginx.conf"
 
 # 7 启动
 ps -e | grep -i uwsgi
